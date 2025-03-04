@@ -1,4 +1,4 @@
-package com.gonzapolleria.roomexample.infrastructure.Movies
+package com.gonzapolleria.roomexample.ui.movies
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.gonzapolleria.roomexample.application.database.entities.MovieEntity
+import com.gonzapolleria.roomexample.data.database.entities.MovieEntity
+import com.gonzapolleria.roomexample.data.viewmodels.MovieViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -78,7 +79,7 @@ fun MovieScreen(
                 ),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Delete Movies")
+                Text(text = "Delete movies")
             }
 
             LazyColumn(modifier = Modifier.weight(1f)) {

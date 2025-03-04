@@ -1,9 +1,9 @@
-package com.gonzapolleria.roomexample.application.database.dao
+package com.gonzapolleria.roomexample.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.gonzapolleria.roomexample.application.database.entities.MovieEntity
+import com.gonzapolleria.roomexample.data.database.entities.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

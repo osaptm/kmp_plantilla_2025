@@ -1,12 +1,12 @@
-package com.gonzapolleria.roomexample.application.database
+package com.gonzapolleria.roomexample.data.database
 
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import com.gonzapolleria.roomexample.application.database.dao.MovieDao
-import com.gonzapolleria.roomexample.application.database.entities.MovieEntity
+import com.gonzapolleria.roomexample.data.database.dao.MovieDao
+import com.gonzapolleria.roomexample.data.database.entities.MovieEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 

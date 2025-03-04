@@ -1,4 +1,4 @@
-package com.gonzapolleria.roomexample.application.database.entities
+package com.gonzapolleria.roomexample.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.gonzapolleria.roomexample.application.database
+package com.gonzapolleria.roomexample.data.database
 
 import androidx.room.RoomDatabase
 import androidx.room.Room

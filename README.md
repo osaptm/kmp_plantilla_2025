@@ -1,14 +1,29 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+Arquitectura Limpia - Ejemplo de estructura 
+Para proyecto Grande mejor hacerlo por Features
+* Es un Ejemplo para saber que puede contener cada carpeta
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
-
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+movies/
+├── ui/                    
+│   ├── MovieListScreen.kt   # Pantalla de lista de películas
+│   ├── MovieUIState.kt      # Estado de la UI para películas
+│   ├── Navegación
+│   ├── Inyección (DI)
+│   
+├── application(data)/           
+│   ├── MovieViewModel.kt    # ViewModel para la lógica de la aplicación
+│   ├── database/       # Implementación de la base de datos (ej: Room, SQLite)
+│   ├── api/            # Llamadas a APIs externas (ej: Retrofit, Ktor)
+│   ├── repositories/   # Implementaciones de repositorios (ej: MovieRepositoryImpl)
+│   └── mappers/        # Mappers para convertir entre entidades de dominio y de data
+│   └── Viewmodels/     
+│   
+├── domain/                
+│   ├── Movie.kt             # Entidad de negocio (película)
+│   ├── MovieRepository.kt   # Interfaz del repositorio
+│   ├── AddMovieUseCase.kt   # Caso de uso para agregar películas
+│   ├── GetAllMoviesUseCase.kt # Caso de uso para obtener películas
+│   │
+│   ├── entities/       # Entidades de negocio (ej: Movie)
+│   ├── repositories/   # Interfaces de repositorios (ej: MovieRepository)
+│   ├── usecases/       # Casos de uso (ej: AddMovieUseCase, GetAllMoviesUseCase)
+│   └── exceptions/     # Excepciones específicas del dominio (opcional)
