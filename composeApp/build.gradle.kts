@@ -36,9 +36,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-
             //KOIN
             implementation(libs.koin.android)
+            //Splash Screen
+            implementation(libs.core.splashscreen)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -50,22 +51,37 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
 
+            //NAVIGATION COMPOSE
+            implementation(libs.navigation.compose)
             //ROOM y KOIN
             implementation(libs.androidx.room.runtime)
             implementation(libs.sqlite.bundled)
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            //Ktor para consumo de APIS
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.negotiation)
+            implementation(libs.kotlin.serialization)
+            //Coil para cargar Imagenes de URL
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor3)
+            //WEBVIEW PARA VIDEOS
+            api(libs.compose.webview.multiplatform)
+        }
+        iosMain.dependencies {
+            //Ktor para consumo de APIS
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
 
 android {
-    namespace = "com.gonzapolleria.roomexample"
+    namespace = "com.gonzapolleria.kmp2025"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.gonzapolleria.roomexample"
+        applicationId = "com.gonzapolleria.kmp2025"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

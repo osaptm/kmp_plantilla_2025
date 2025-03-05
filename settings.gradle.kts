@@ -1,4 +1,4 @@
-rootProject.name = "RoomFebrero2025"
+rootProject.name = "KMP2025"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
