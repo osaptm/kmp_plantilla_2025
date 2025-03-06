@@ -10,6 +10,9 @@ plugins {
     //ROOM
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
+
+    //Ktor para consumo de APIS Serializacion
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -38,6 +41,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             //KOIN
             implementation(libs.koin.android)
+            //Ktor para consumo de APIS
+            implementation(libs.ktor.client.okhttp)
             //Splash Screen
             implementation(libs.core.splashscreen)
         }
