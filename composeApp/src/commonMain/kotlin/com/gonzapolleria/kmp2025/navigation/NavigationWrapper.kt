@@ -8,6 +8,7 @@ import androidx.navigation.toRoute
 import com.gonzapolleria.kmp2025.example_ktor_coil.ScreenPrueba
 import com.gonzapolleria.kmp2025.example_room.domain.entities.MovieDom
 import com.gonzapolleria.kmp2025.example_room.ui.MovieScreen
+import com.gonzapolleria.kmp2025.onboarding.OnboardingScreen
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.compose.viewmodel.koinViewModel
@@ -16,7 +17,13 @@ import org.koin.compose.viewmodel.koinViewModel
 fun NavigationWrapper() {
     val mainNavController = rememberNavController()
 
-    NavHost(navController = mainNavController, startDestination = Routes.Home.route) {
+    NavHost(navController = mainNavController, startDestination = Routes.Onboarding.route) {
+        composable(route = Routes.Onboarding.route) {
+           OnboardingScreen {
+
+           }
+        }
+
         composable(route = Routes.Home.route) {
             MovieScreen(
                 viewModel = koinViewModel(),
