@@ -1,8 +1,8 @@
 package com.gonzapolleria.kmp2025.shared.di
 
-import com.gonzapolleria.kmp2025.shared.room_database.MovieDatabase
-import com.gonzapolleria.kmp2025.shared.room_database.getDatabaseBuilder
-import com.gonzapolleria.kmp2025.shared.room_database.getMovieDatabase
+import com.gonzapolleria.kmp2025.shared.room.MovieDatabase
+import com.gonzapolleria.kmp2025.shared.room.getDatabaseBuilder
+import com.gonzapolleria.kmp2025.shared.room.getMovieDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 

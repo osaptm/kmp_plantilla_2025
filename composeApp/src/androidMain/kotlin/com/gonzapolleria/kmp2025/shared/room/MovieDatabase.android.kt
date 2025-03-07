@@ -1,4 +1,4 @@
-package com.gonzapolleria.kmp2025.shared.room_database
+package com.gonzapolleria.kmp2025.shared.room
 
 import android.content.Context
 import androidx.room.Room

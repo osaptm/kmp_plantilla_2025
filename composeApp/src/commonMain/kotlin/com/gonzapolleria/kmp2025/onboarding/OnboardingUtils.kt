@@ -1,13 +1,32 @@
 package com.gonzapolleria.kmp2025.onboarding
 
+import com.gonzapolleria.kmp2025.shared.persistence.SharedPreferencesHelper
+
+fun String?.toBoolean(): Boolean {
+    return this?.toBooleanStrictOrNull() ?: false
+}
 
 class OnboardingUtils() {
+    companion object {
 
-    fun isOnboardingCompleted(): Boolean {
-        return false
-    }
+        private fun excistOnboarding(prefs : SharedPreferencesHelper ): Unit {
+            if(prefs.getString("onboardingCompleted") == null) {
+                prefs.putString("onboardingCompleted", "false")
+            }
+        }
 
-    fun setOnboardingCompleted() {
+        fun isOnboardingCompleted(): Boolean {
+            val prefs = SharedPreferencesHelper()
+            excistOnboarding(prefs)
+            val onboardingCompleted = prefs.getString("onboardingCompleted").toBoolean()
+            return onboardingCompleted
+        }
+
+        fun setOnboardingCompleted() {
+            val prefs = SharedPreferencesHelper()
+            excistOnboarding(prefs)
+            prefs.putString("onboardingCompleted", "true")
+        }
 
     }
 

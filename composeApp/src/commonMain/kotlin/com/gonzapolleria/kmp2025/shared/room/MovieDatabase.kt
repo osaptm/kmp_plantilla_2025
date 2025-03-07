@@ -1,12 +1,12 @@
-package com.gonzapolleria.kmp2025.shared.room_database
+package com.gonzapolleria.kmp2025.shared.room
 
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import com.gonzapolleria.kmp2025.shared.room_database.dao.MovieDao
-import com.gonzapolleria.kmp2025.shared.room_database.entities.MovieEntity
+import com.gonzapolleria.kmp2025.shared.room.dao.MovieDao
+import com.gonzapolleria.kmp2025.shared.room.entities.MovieEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 

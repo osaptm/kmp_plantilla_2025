@@ -1,7 +1,7 @@
 package com.gonzapolleria.kmp2025.shared.di
 
-import com.gonzapolleria.kmp2025.shared.room_database.MovieDatabase
-import com.gonzapolleria.kmp2025.shared.room_database.dao.MovieDao
+import com.gonzapolleria.kmp2025.shared.room.MovieDatabase
+import com.gonzapolleria.kmp2025.shared.room.dao.MovieDao
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

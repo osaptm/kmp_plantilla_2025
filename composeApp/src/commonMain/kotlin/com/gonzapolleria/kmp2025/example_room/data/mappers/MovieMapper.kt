@@ -1,7 +1,7 @@
 package com.gonzapolleria.kmp2025.example_room.data.mappers
 
 import com.gonzapolleria.kmp2025.example_room.domain.entities.MovieDom
-import com.gonzapolleria.kmp2025.shared.room_database.entities.MovieEntity
+import com.gonzapolleria.kmp2025.shared.room.entities.MovieEntity
 
 object MovieMapper {
     fun toDomain(entity: MovieEntity): MovieDom {

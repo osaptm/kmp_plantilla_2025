@@ -1,4 +1,4 @@
-package com.gonzapolleria.kmp2025.shared.room_database.entities
+package com.gonzapolleria.kmp2025.shared.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

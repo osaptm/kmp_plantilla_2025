@@ -73,12 +73,19 @@ kotlin {
             implementation(libs.coil.network.ktor3)
             //WEBVIEW PARA VIDEOS
             api(libs.compose.webview.multiplatform)
+
+            //LOGIN FIREBASE
+            implementation(libs.kmpauth.google)
+            implementation(libs.kmpauth.firebase)
+            implementation(libs.kmpauth.uihelper)
         }
+
         iosMain.dependencies {
             //Ktor para consumo de APIS
             implementation(libs.ktor.client.darwin)
         }
     }
+
 }
 
 android {

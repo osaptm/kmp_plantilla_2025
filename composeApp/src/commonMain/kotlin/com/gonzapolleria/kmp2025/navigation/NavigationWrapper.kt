@@ -9,19 +9,26 @@ import com.gonzapolleria.kmp2025.example_ktor_coil.ScreenPrueba
 import com.gonzapolleria.kmp2025.example_room.domain.entities.MovieDom
 import com.gonzapolleria.kmp2025.example_room.ui.MovieScreen
 import com.gonzapolleria.kmp2025.onboarding.OnboardingScreen
-import kotlinx.serialization.encodeToString
+import com.gonzapolleria.kmp2025.onboarding.OnboardingUtils
 import kotlinx.serialization.json.Json
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun NavigationWrapper() {
     val mainNavController = rememberNavController()
+    val initialRoute = if (OnboardingUtils.isOnboardingCompleted()) Routes.Home.route else Routes.Onboarding.route
 
-    NavHost(navController = mainNavController, startDestination = Routes.Onboarding.route) {
+    NavHost(navController = mainNavController, startDestination = initialRoute) {
+
         composable(route = Routes.Onboarding.route) {
-           OnboardingScreen {
-
-           }
+            OnboardingScreen {
+                OnboardingUtils.setOnboardingCompleted()
+                mainNavController.navigate(Routes.Home.route){
+                    popUpTo(Routes.Onboarding.route) {
+                        inclusive = true
+                    }
+                }
+            }
         }
 
         composable(route = Routes.Home.route) {

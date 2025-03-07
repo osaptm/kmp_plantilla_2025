@@ -1,7 +1,7 @@
 package com.gonzapolleria.kmp2025.example_room.data.repositories
 
 import com.gonzapolleria.kmp2025.example_room.data.mappers.MovieMapper
-import com.gonzapolleria.kmp2025.shared.room_database.dao.MovieDao
+import com.gonzapolleria.kmp2025.shared.room.dao.MovieDao
 import com.gonzapolleria.kmp2025.example_room.domain.entities.MovieDom
 import com.gonzapolleria.kmp2025.example_room.domain.repositories.MovieRepository
 import kotlinx.coroutines.flow.Flow

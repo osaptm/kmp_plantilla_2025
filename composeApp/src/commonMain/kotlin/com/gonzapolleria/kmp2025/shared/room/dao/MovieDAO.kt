@@ -1,9 +1,9 @@
-package com.gonzapolleria.kmp2025.shared.room_database.dao
+package com.gonzapolleria.kmp2025.shared.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.gonzapolleria.kmp2025.shared.room_database.entities.MovieEntity
+import com.gonzapolleria.kmp2025.shared.room.entities.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
