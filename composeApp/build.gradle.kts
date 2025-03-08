@@ -13,6 +13,10 @@ plugins {
 
     //Ktor para consumo de APIS Serializacion
     alias(libs.plugins.kotlinxSerialization)
+
+    //LOGIN GOOGLE
+    alias(libs.plugins.gms.google.services)
+
 }
 
 kotlin {
@@ -33,7 +37,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
+
+
     sourceSets {
         task("testClasses")
         androidMain.dependencies {
@@ -45,6 +51,14 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             //Splash Screen
             implementation(libs.core.splashscreen)
+            //LOGIN GOOGLE
+            implementation(libs.androidx.credentials)
+            implementation(libs.androidx.credentials.play.services.auth)
+            implementation(libs.googleid)
+
+            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(libs.firebase.auth.ktx)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -73,11 +87,6 @@ kotlin {
             implementation(libs.coil.network.ktor3)
             //WEBVIEW PARA VIDEOS
             api(libs.compose.webview.multiplatform)
-
-            //LOGIN FIREBASE
-            implementation(libs.kmpauth.google)
-            implementation(libs.kmpauth.firebase)
-            implementation(libs.kmpauth.uihelper)
         }
 
         iosMain.dependencies {
@@ -124,6 +133,7 @@ dependencies {
     implementation(libs.androidx.runtime.android)
     implementation(libs.androidx.annotation.jvm)
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.runtime.saveable.android)
     debugImplementation(compose.uiTooling)
     //ROOM KSP
     add("kspAndroid", libs.androidx.room.compiler)

@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.Context
 import com.gonzapolleria.kmp2025.shared.di.initKoin
 import org.koin.android.ext.koin.androidContext
-import com.google.firebase.FirebaseApp
+
 
 @SuppressLint("StaticFieldLeak")
 object ApplicationContextProvider {
@@ -19,6 +19,7 @@ object ApplicationContextProvider {
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
         // Inicializar el contexto
         ApplicationContextProvider.init(this)
 

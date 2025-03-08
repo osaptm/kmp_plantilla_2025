@@ -3,7 +3,6 @@ package com.gonzapolleria.kmp2025.navigation
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.activity.ComponentActivity
-import androidx.compose.runtime.Composable
 import com.gonzapolleria.kmp2025.ApplicationContextProvider
 
 fun Context.getActivity(): ComponentActivity? {
