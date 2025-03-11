@@ -1,49 +1,38 @@
 import SwiftUI
-import ComposeApp
-import GoogleSignIn
+import FirebaseMessaging
+import FirebaseAnalytics
 import FirebaseCore
+import ComposeApp
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
       FirebaseApp.configure()
-      AppInitializer.shared.onApplicationStart()
-      
+      AppInitializerPush.shared.onApplicationStart()
+
     return true
   }
-    
-    func application(
-          _ app: UIApplication,
-          open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-        ) -> Bool {
-          var handled: Bool
 
-          handled = GIDSignIn.sharedInstance.handle(url)
-          if handled {
-            return true
-          }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
 
-          // Handle other custom URL types.
 
-          // If not handled by this app, return false.
-          return false
-        }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
+        NotifierManager.shared.onApplicationDidReceiveRemoteNotification(userInfo: userInfo)
+        return UIBackgroundFetchResult.newData
+    }
 
-    
 }
 
 @main
 struct iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    init() {
-            InitKoinKt.doInitKoinIos()
-        }
-    var body: some Scene {
-        WindowGroup {
-            ContentView().onOpenURL(perform: { url in
-                                     GIDSignIn.sharedInstance.handle(url)
-                                 })
-        }
-    }
+
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+		}
+	}
 }

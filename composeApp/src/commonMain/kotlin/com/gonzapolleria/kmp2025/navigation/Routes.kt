@@ -7,6 +7,7 @@ sealed class Routes(val route:String){
     data object Onboarding: Routes(route = "onboarding")
     data object Home: Routes(route = "prueba_room")
     data object Login: Routes(route = "login")
+    data object Push: Routes(route = "push_notification")
 }
 
 @Serializable

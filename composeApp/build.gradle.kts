@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -14,8 +15,8 @@ plugins {
     //Ktor para consumo de APIS Serializacion
     alias(libs.plugins.kotlinxSerialization)
 
-    //LOGIN GOOGLE
-    alias(libs.plugins.gms.google.services)
+    //LOGIN GOOGLE // FIREBASE Y NOTIFICACIONES
+    id("com.google.gms.google-services")
 
 }
 
@@ -33,6 +34,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
+            export("io.github.mirzemehdi:kmpnotifier:1.4.0")
             baseName = "ComposeApp"
             isStatic = true
         }
@@ -56,43 +58,63 @@ kotlin {
             implementation(libs.androidx.credentials.play.services.auth)
             implementation(libs.googleid)
 
-            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(project.dependencies.platform("com.google.firebase:firebase-bom:33.10.0"))
             implementation(libs.firebase.auth.ktx)
 
-        }
-        commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)
+            // PARA FUNCIONAR NOTIFICACIONES PUSH
+            implementation("androidx.startup:startup-runtime:1.2.0")
 
-            //NAVIGATION COMPOSE
-            implementation(libs.navigation.compose)
-            //ROOM y KOIN
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
-            api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            //Ktor para consumo de APIS
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.negotiation)
-            implementation(libs.kotlin.serialization)
-            //Coil para cargar Imagenes de URL
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor3)
-            //WEBVIEW PARA VIDEOS
-            api(libs.compose.webview.multiplatform)
+        }
+        val commonMain by getting {
+            dependencies {
+
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.androidx.lifecycle.viewmodel)
+                implementation(libs.androidx.lifecycle.runtime.compose)
+
+                //NAVIGATION COMPOSE
+                implementation(libs.navigation.compose)
+                //ROOM y KOIN
+                implementation(libs.androidx.room.runtime)
+                implementation(libs.sqlite.bundled)
+                api(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
+                //Ktor para consumo de APIS
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.kotlin.serialization)
+                //Coil para cargar Imagenes de URL
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor3)
+                //WEBVIEW PARA VIDEOS
+                api(libs.compose.webview.multiplatform)
+
+                //NOTIFICACIONES PUSH
+                api("io.github.mirzemehdi:kmpnotifier:1.4.0")
+
+            }
         }
 
-        iosMain.dependencies {
-            //Ktor para consumo de APIS
-            implementation(libs.ktor.client.darwin)
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
         }
+
+
     }
 
 }

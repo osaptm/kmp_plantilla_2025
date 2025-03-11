@@ -11,20 +11,21 @@ import com.gonzapolleria.kmp2025.example_room.ui.MovieScreen
 import com.gonzapolleria.kmp2025.login.ui.LoginScreen
 import com.gonzapolleria.kmp2025.onboarding.OnboardingScreen
 import com.gonzapolleria.kmp2025.onboarding.OnboardingUtils
+import com.gonzapolleria.kmp2025.pushnotificactions.PushScreen
 import kotlinx.serialization.json.Json
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun NavigationWrapper() {
     val mainNavController = rememberNavController()
-    val initialRoute = if (OnboardingUtils.isOnboardingCompleted()) Routes.Login.route else Routes.Onboarding.route
+    val initialRoute = if (OnboardingUtils.isOnboardingCompleted()) Routes.Push.route else Routes.Onboarding.route
 
     NavHost(navController = mainNavController, startDestination = initialRoute) {
 
         composable(route = Routes.Onboarding.route) {
             OnboardingScreen {
                 OnboardingUtils.setOnboardingCompleted()
-                mainNavController.navigate(Routes.Home.route){
+                mainNavController.navigate(Routes.Push.route){
                     popUpTo(Routes.Onboarding.route) {
                         inclusive = true
                     }
@@ -41,6 +42,10 @@ fun NavigationWrapper() {
 
         composable(route = Routes.Login.route) {
             LoginScreen()
+        }
+
+        composable(route = Routes.Push.route) {
+            PushScreen()
         }
 
         composable<MovieDetail> { navBackStackEntry ->
